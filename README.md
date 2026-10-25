@@ -1,3 +1,8 @@
+updated install guide (assuming default ! usage)
+
+!repo add asc-cog https://github.com/oldmanpoko/asc-cog
+!cog install asc-cog AutoShoutout
+
 Basic repository for Red Discord Bot Cogs (plugins)
 
 [p]repo add acg-cogs https://github.com/ArmchairGuru/acg-cogs   
