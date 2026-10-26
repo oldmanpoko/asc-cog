@@ -2,7 +2,7 @@ updated install guide (assuming default ! usage)
 
 !repo add asc-cog https://github.com/oldmanpoko/asc-cog
 
-!cog install asc-cog AutoShoutout
+!cog install asc-cog cogname
 
 Basic repository for Red Discord Bot Cogs (plugins)
 
