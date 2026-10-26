@@ -56,8 +56,9 @@ class StreamWatch(commands.Cog):
             self._live.discard(key)
             await self._went_offline(after, settings)
 
-       async def _went_live(self, member, stream, settings):
+    async def _went_live(self, member, stream, settings):
         guild = member.guild
+
         role = guild.get_role(settings["live_role"]) if settings["live_role"] else None
         if role and guild.me.guild_permissions.manage_roles:
             try:
@@ -69,21 +70,17 @@ class StreamWatch(commands.Cog):
         if not channel or not channel.permissions_for(guild.me).send_messages:
             return
 
-        stream_title = stream.details or stream.name or "a live stream"
-
         embed = discord.Embed(
-            title=f"🔴 oi degens! {member.display_name} is live, go say hi! {stream_title}",
-            description="click here to join the degens",
+            title=f"🔴 {member.display_name} is live!",
+            description=stream.details or stream.name or "No title",
             url=stream.url,
             colour=discord.Colour.purple(),
         )
         embed.set_thumbnail(url=member.display_avatar.url)
-
         if stream.game:
             embed.add_field(name="Playing", value=stream.game)
         if stream.platform:
             embed.add_field(name="Platform", value=stream.platform)
-
         await channel.send(embed=embed)
 
     async def _went_offline(self, member, settings):
