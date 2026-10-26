@@ -58,6 +58,7 @@ class StreamWatch(commands.Cog):
 
     async def _went_live(self, member, stream, settings):
         guild = member.guild
+
         role = guild.get_role(settings["live_role"]) if settings["live_role"] else None
         if role and guild.me.guild_permissions.manage_roles:
             try:
@@ -84,7 +85,7 @@ class StreamWatch(commands.Cog):
         if stream.platform:
             embed.add_field(name="Platform", value=stream.platform)
         await channel.send(embed=embed)
-
+        
     async def _went_offline(self, member, settings):
         role = member.guild.get_role(settings["live_role"]) if settings["live_role"] else None
         if role and role in member.roles and member.guild.me.guild_permissions.manage_roles:
