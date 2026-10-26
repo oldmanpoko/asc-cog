@@ -56,7 +56,7 @@ class StreamWatch(commands.Cog):
             self._live.discard(key)
             await self._went_offline(after, settings)
 
-    async def _went_live(self, member, stream, settings):
+       async def _went_live(self, member, stream, settings):
         guild = member.guild
         role = guild.get_role(settings["live_role"]) if settings["live_role"] else None
         if role and guild.me.guild_permissions.manage_roles:
