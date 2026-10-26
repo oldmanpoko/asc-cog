@@ -49,12 +49,12 @@ class StreamWatch(commands.Cog):
         key = (guild.id, after.id)
         stream = self.get_stream(after)
 
-        if stream and key not in self._live:
-            self._live.add(key)
-            await self._went_live(after, stream, settings)
-        elif not stream and key in self._live:
-            self._live.discard(key)
-            await self._went_offline(after, settings)
+       if stream and key not in self._live:
+        self._live.add(key)
+        await self._went_live(after, stream, settings)
+    elif not stream and key in self._live:
+        self._live.discard(key)
+        await self._went_offline(after, settings)
 
     async def _went_live(self, member, stream, settings):
         guild = member.guild
