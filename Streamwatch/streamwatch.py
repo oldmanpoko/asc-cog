@@ -70,9 +70,12 @@ class StreamWatch(commands.Cog):
         if not channel or not channel.permissions_for(guild.me).send_messages:
             return
 
+        # Mobile notification optimized title layout
+        stream_title = stream.details or stream.name or "a live stream"
+
         embed = discord.Embed(
-            title=f"🔴 {member.display_name} is live!",
-            description=stream.details or stream.name or "No title",
+            title=f"🔴 {member.display_name} is live: {stream_title}",
+            description="Click the title link above to join the stream!",
             url=stream.url,
             colour=discord.Colour.purple(),
         )
@@ -109,6 +112,7 @@ class StreamWatch(commands.Cog):
     @commands.admin_or_permissions(manage_guild=True)
     async def streamwatch(self, ctx: commands.Context):
         """Configure StreamWatch."""
+        pass  # <-- Added pass statement here to resolve python formatting requirements
 
     @streamwatch.command(name="toggle")
     async def sw_toggle(self, ctx: commands.Context):
